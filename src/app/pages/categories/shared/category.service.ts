@@ -54,7 +54,7 @@ export class CategoryService {
     );
   }
 
-  //PRIVATE METHODS
+  // PRIVATE METHODS
 
   private jsonDataToCategories(jsonData: any[]): Category[] {
     const categories: Category[] = [];

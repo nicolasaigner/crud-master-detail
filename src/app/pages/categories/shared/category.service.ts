@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Category} from './category.model';
 import {catchError, map} from 'rxjs/operators';
@@ -11,7 +11,7 @@ export class CategoryService {
 
   private apiPath: string = 'api/categories';
 
-  constructor(private http: HttpClient, private headers: HttpHeaders) { }
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<Category[]> {
     return this.http.get(this.apiPath).pipe(

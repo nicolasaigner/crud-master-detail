@@ -1,6 +1,6 @@
 import {AfterContentChecked, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Entry} from '../shared/category.model';
+import {Category} from '../shared/category.model';
 import {CategoryService} from '../shared/category.service';
 import {ActivatedRoute, Router } from '@angular/router';
 import {switchMap} from 'rxjs/operators';
@@ -18,7 +18,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   pageTitle: string;
   serverErrorMessages: string[] = null;
   submittingForm: boolean = false;
-  category: Entry = new Entry();
+  category: Category = new Category();
 
   constructor(private categoryService: CategoryService,
               private route: ActivatedRoute,
@@ -87,7 +87,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   }
 
   private createCategory() {
-    const category: Entry = Object.assign(new Entry(), this.categoryForm.value);
+    const category: Category = Object.assign(new Category(), this.categoryForm.value);
 
     this.categoryService.create(category).subscribe(
       categoryReceive => this.actionsForSuccess(categoryReceive),
@@ -96,7 +96,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   }
 
   private updateCategory() {
-    const category: Entry = Object.assign(new Entry(), this.categoryForm.value);
+    const category: Category = Object.assign(new Category(), this.categoryForm.value);
 
     this.categoryService.update(category).subscribe(
       categoryReceive => this.actionsForSuccess(categoryReceive),
@@ -104,7 +104,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     );
   }
 
-  private actionsForSuccess(category: Entry) {
+  private actionsForSuccess(category: Category) {
     toastr.success('Solicitação processada com sucesso!');
 
     // redirect/reload component page

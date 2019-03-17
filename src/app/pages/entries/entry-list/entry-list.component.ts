@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {EntryService} from '../shared/entry.service';
 import {Entry} from '../shared/entry.model';
 import {BaseResourceListComponent} from '../../../shared/components/base-resource-list/base-resource-list.component';

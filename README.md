@@ -1,30 +1,112 @@
-# Finansys
+# CRUD - Master Detail (Angular 7+)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
+O projeto foi desenvolvido com aulas do curso ["Angular Avançado: Criando uma Arquitetura Master/Detail" do Nonato Costa](https://www.udemy.com/course/angular-avancado/), onde a proposta do curso é desenvolver uma aplicação **front-end** através de reaproveitamento de código e componentização com a arquitetura **Master/Detail**.
 
-## Development server
+## Sobre o projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Durante o curso, a ideia é criar um "Gerenciador Financeiro Pessoal", chamado **"Finansys"**, onde o usuário gerencia suas contas, incluindo, editando, visualizando e excluindo o que desejar, além disso, gerar um relatório mensal com gráficos.
 
-## Code scaffolding
+## Visualizar o projeto em modo de desenvolvimento
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Faça o clone do repositório:
 
-## Build
+``
+git clone https://github.com/nicolasaigner/crud-master-detail.git
+``
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Após finalizar, acesse a pasta do projeto:
 
-## Running unit tests
+``
+cd crud-master-detail
+``
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Instale as dependências:
 
-## Running end-to-end tests
+``
+npm install
+``
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+E "sirva" com o comando do Angular:
 
-## Further help
+``
+npm run start
+``
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Acesse o host abaixo em seu navegador:
 
-## Curso
-https://www.udemy.com/course/angular-avancado/
+``
+http://localhost:4200/
+``
+
+## Visualizar o projeto em produção:
+
+## Manualmente
+
+Se você quiser ver o projeto rodando em produção mas em um servidor localhost ou em cloud com nginx:
+
+Faça o clone do repositório:
+
+``
+git clone https://github.com/nicolasaigner/crud-master-detail.git
+``
+
+Após finalizar, acesse a pasta do projeto:
+
+``
+cd crud-master-detail
+``
+
+Instale as dependências:
+
+``
+npm install
+``
+
+Realize o build:
+
+``
+npm run build
+``
+
+Quando finalizar, copie os arquivos:
+
+./dist/finansys
+
+Para a pasta onde o Nginx serve seus projetos:
+
+/nginx/html
+
+E utilize o nginx.conf para servir a página:
+
+`` 
+server {
+  listen 80;
+  location / {
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+    try_files $uri $uri/ /index.html =404;
+  }
+}
+``
+
+Após isso, acesse o host abaixo em seu navegador:
+
+``
+http://localhost
+``
+
+## Docker
+
+Com Docker fica mais fácil, basta fazer o comando:
+
+``
+docker run --name finansys -p 8081:80 -d nicolasaigner/crud-master-detail:latest
+``
+
+Após isso, acesse o host abaixo em seu navegador:
+
+``
+http://localhost:8081
+``
+
+Lembrando que a porta 80 é a porta padrão de exposição do container e a porta 8081 é a porta que você pode colocar você acessar pelo seu navegador.
